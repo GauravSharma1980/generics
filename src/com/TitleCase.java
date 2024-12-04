@@ -1,5 +1,7 @@
 package com;
 
+import java.util.Arrays;
+
 public class TitleCase {
 
     public static void main(String[] args) {
@@ -9,6 +11,23 @@ public class TitleCase {
 
         String outStr = convertToTitleCase(str);
         System.out.println(outStr);
+
+        System.out.println("***************************");
+        String str1 = "I am working in Ibm";
+        String strOut = convertToTitleCaseUsingStreamApi(str1);
+        System.out.println(strOut);
+    }
+
+    private static String convertToTitleCaseUsingStreamApi(String inputString) {
+        StringBuilder strTemp = new StringBuilder();
+/*        Arrays.asList(inputString.toCharArray()).stream()
+                //.filter(character -> Integer.valueOf(Arrays.toString(character)) != 32)
+                //.filter(character -> Integer.valueOf(Arrays.toString(character)) >= 97 && Integer.valueOf(Arrays.toString(character)) < 123)
+                .map(character -> strTemp.append(character));*/
+        Arrays.asList(inputString.toCharArray()).stream()
+                .filter(character ->String.valueOf(character) != " ")
+                .forEach(System.out::println);
+        return strTemp.toString();
     }
 
     private static String convertToTitleCase(String str) {
